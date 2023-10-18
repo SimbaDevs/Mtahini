@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Mtahini</string>
+    <string name="Welcome">Welcome to</string>
+    <string name="intro_msg">A place to register for units and  tests and scores…</string>
+    <string name="startMsg">Let\'s get started…</string>
+    <string name="student">Continue as a student</string>
+    <string name="lecturer">Continue as Lecturer</string>
+    <string name="have_account">Already have an account</string>
+    <string name="login"><u>Login</u></string>
+    <string name="back_arrow">Back arrow</string>
+    <string name="loginNoLine">Login</string>
+    <string name="loginMsg">Login to start your experience with the app!</string>
+    <string name="email">Email</string>
+</resources>
