@@ -25,8 +25,8 @@ teaches *only one* course.
   g. Students who registered but are missing marks in all the course.
   h. Students who are attempting a course for the second time (having failed in the first
   attempt).
-4. Not allow a lecturer to edit marks entered.
-5. Allow the administrator to edit the entered marks.
-6. Print a summary of all marks scored per course (per semester and per year) per student for a
+4. *Not* allow a lecturer to edit marks entered.
+5. *Allow* the administrator to edit the entered marks.
+6. *Print a summary* of all marks scored per course (per semester and per year) per student for a
 class e.g CS 3.2, total marks for all courses per student, mean per student and a
-recommendation per student (e.g pass, fail, 2 supps etc).
+recommendation per student (e.g pass, fail, 2 supplementary exams etc).
