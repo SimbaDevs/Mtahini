@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp"
-    tools:context=".Login">
+    tools:context=".StudentRegistration">
 
     <ImageButton
-        android:id="@+id/arrowButton"
+        android:id="@+id/stdRegArrowButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="?android:attr/selectableItemBackground"
@@ -18,24 +18,42 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/loginNoLine"
+        android:text="@string/registerNoLine"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/light_blue"
-        android:layout_marginTop="21dp"/>
+        />
     <TextView
-        android:layout_width="200dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:text="@string/loginMsg"
+        android:text="@string/registerMsg"
         android:textSize="16sp"
         android:paddingTop="19dp"
         android:textColor="@color/black"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/email"
+        android:text="@string/name"
         android:textSize="16sp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
+    <EditText
+        android:id="@+id/student_name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/input_border"
+        android:hint="@string/enter_name"
+        android:inputType="textEmailSubject"
+        android:layout_marginTop="2dp"
+        android:paddingStart="10dp"
+        android:autofillHints="emailAddress"
+        tools:ignore="RtlSymmetry" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/student_email"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
         android:textColor="@color/black"/>
     <EditText
         android:id="@+id/email_edit_text"
@@ -51,7 +69,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/your_password"
+        android:text="@string/password"
         android:layout_marginTop="20dp"
         android:textSize="16sp"
         android:textColor="@color/black"/>
@@ -68,18 +86,36 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/Confirm_password"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <EditText
+        android:id="@+id/confirm_password_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/input_border"
+        android:hint="@string/re_enter_password"
+        android:layout_marginTop="2dp"
+        android:paddingStart="5dp"
+        android:autofillHints="password"
+        tools:ignore="RtlSymmetry"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textFontWeight="400"
         android:textColor="@color/light_blue"
-        android:text="@string/forgot"/>
+        android:text="@string/forgot"
+        tools:ignore="UnusedAttribute" />
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/blue_background_button"
-        android:text="@string/login_no_line"
+        android:text="@string/registerNoLine"
         android:textFontWeight="700"
         android:textColor="@color/white"/>
     <LinearLayout
@@ -87,23 +123,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:text="@string/no_account"
+            android:text="@string/have_account"
             />
         <TextView
-            android:id="@+id/register_student_text"
+            android:id="@+id/login_text_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="16sp"
             android:textColor="#575DFB"
             android:textStyle="bold"
-            android:text="@string/register"
+            android:text="@string/login"
             android:layout_marginStart="5dp"
             />
     </LinearLayout>

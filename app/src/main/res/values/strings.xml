@@ -18,4 +18,15 @@
     <string name="forgot"><u>Forgot Password</u></string>
     <string name="no_account">Don\'t have an account?</string>
     <string name="register"><u>Register</u></string>
+    <string name="registerMsg">Create an account to access all features of <b>Mtahini!</b></string>
+    <string name="student_email">Student email</string>
+    <string name="student_name">Student name</string>
+    <string name="name">Name</string>
+    <string name="enter_name">Enter name</string>
+    <string name="password">Password</string>
+    <string name="Confirm_password">Confirm Password</string>
+    <string name="registerNoLine">Register</string>
+    <string name="lec_no_account">Not yet registered?</string>
+    <string name="lectureLognoLine">Lecture Login</string>
+    <string name="re_enter_password">Repeat Password</string>
 </resources>

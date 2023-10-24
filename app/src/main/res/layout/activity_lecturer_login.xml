@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp"
-    tools:context=".Login">
+    tools:context=".LecturerLogin">
 
     <ImageButton
         android:id="@+id/arrowButton"
@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/loginNoLine"
+        android:text="@string/lectureLognoLine"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/light_blue"
@@ -94,10 +94,10 @@
             android:layout_height="match_parent"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:text="@string/no_account"
+            android:text="@string/lec_no_account"
             />
         <TextView
-            android:id="@+id/register_student_text"
+            android:id="@+id/register_lec_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="16sp"
