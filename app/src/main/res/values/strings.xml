@@ -7,8 +7,15 @@
     <string name="lecturer">Continue as Lecturer</string>
     <string name="have_account">Already have an account</string>
     <string name="login"><u>Login</u></string>
+    <string name="login_no_line">Login</string>
     <string name="back_arrow">Back arrow</string>
     <string name="loginNoLine">Login</string>
     <string name="loginMsg">Login to start your experience with the app!</string>
     <string name="email">Email</string>
+    <string name="enter_email_address">Enter email address</string>
+    <string name="your_password">Your password</string>
+    <string name="enter_password">Enter password</string>
+    <string name="forgot"><u>Forgot Password</u></string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="register"><u>Register</u></string>
 </resources>
