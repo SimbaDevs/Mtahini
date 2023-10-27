@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class StudentRegistration extends AppCompatActivity {
 
     ImageButton imageButton;
     TextView loginTextView;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

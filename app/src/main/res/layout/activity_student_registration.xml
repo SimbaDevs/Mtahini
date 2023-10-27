@@ -109,6 +109,16 @@
         android:textColor="@color/light_blue"
         android:text="@string/forgot"
         tools:ignore="UnusedAttribute" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/blue_progress_bar"
+        android:visibility="gone"
+        />
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"

@@ -25,7 +25,6 @@ public class Login extends AppCompatActivity {
                     startActivity(previousPage);
                 }
         );
-
         regText.setOnClickListener(
                 v -> {
                     Intent regActivity = new Intent(this, StudentRegistration.class);

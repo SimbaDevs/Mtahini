@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "955617075770",
+    "project_id": "mtahini-app",
+    "storage_bucket": "mtahini-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955617075770:android:1f09076b3d89662f668b03",
+        "android_client_info": {
+          "package_name": "com.symon.mtahini"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3YHUoS-3EjweZ1xXsRryqz2Z2yJ0yIuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
