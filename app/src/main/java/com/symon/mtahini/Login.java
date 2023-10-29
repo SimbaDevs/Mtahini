@@ -4,9 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -28,11 +26,30 @@ public class Login extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            moveToHomeActivity();
+        }
+    }
+    /**
+     * reload - changes the activity to the home activity
+     */
+    public void moveToHomeActivity() {
+        Intent homeActivity = new Intent(this, home.class);
+        startActivity(homeActivity);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mAuth = FirebaseAuth.getInstance();
 
         imageButton = findViewById(R.id.arrowButton);
         regText = findViewById(R.id.register_student_text);
@@ -56,9 +73,20 @@ public class Login extends AppCompatActivity {
                         passwordInput.setError("Password field cannot be empty!");
                         passwordInput.requestFocus();
                         passwordInput.setBackgroundResource(R.drawable.alert_bg);
-                        return;
+
                     }
 
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()){
+                                        moveToHomeActivity();
+                                    } else {
+                                        Toast.makeText(Login.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 }
         );
 

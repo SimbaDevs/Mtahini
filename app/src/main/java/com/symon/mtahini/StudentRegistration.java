@@ -1,5 +1,6 @@
 package com.symon.mtahini;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,12 +29,33 @@ public class StudentRegistration extends AppCompatActivity {
     String name, email, password, confirm_password;
     String regexPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
-    private FirebaseAuth mAuth;
+    protected FirebaseAuth mAuth;
+    /**
+     * reload - changes the activity to the home activity
+     */
+
+    //TODO: make this function accessible in other classes
+    public void moveToHomeActivity() {
+        Intent homeActivity = new Intent(this, home.class);
+        startActivity(homeActivity);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and move to the home activity.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            moveToHomeActivity();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registration);
+
+        mAuth = FirebaseAuth.getInstance();
 
         imageButton = findViewById(R.id.stdRegArrowButton);
         loginTextView = findViewById(R.id.login_text_view);
@@ -81,9 +106,24 @@ public class StudentRegistration extends AppCompatActivity {
 
             if (!(isStrong)){
                 password_input.setError("Password is not strong enough!");
+                password_input.requestFocus();
                 confirm_password_input.requestFocus();
                 confirm_password_input.setBackgroundResource(R.drawable.alert_bg);
             }
+
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                moveToHomeActivity();
+
+                            } else {
+                                Toast.makeText(StudentRegistration.this, "Unable to create account", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
 
         });
 
