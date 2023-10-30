@@ -102,6 +102,7 @@ public class StudentRegistration extends AppCompatActivity {
                 password_input.requestFocus();
                 confirm_password_input.requestFocus();
                 confirm_password_input.setBackgroundResource(R.drawable.alert_bg);
+                return;
             }
 
             mAuth.createUserWithEmailAndPassword(email, password)
