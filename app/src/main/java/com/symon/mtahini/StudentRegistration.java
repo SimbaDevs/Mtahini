@@ -25,20 +25,12 @@ public class StudentRegistration extends AppCompatActivity {
     ImageButton imageButton;
     Button register_button;
     TextView loginTextView;
+    Navigation appNavigation;
 
     String name, email, password, confirm_password;
     String regexPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
     protected FirebaseAuth mAuth;
-    /**
-     * reload - changes the activity to the home activity
-     */
-
-    //TODO: make this function accessible in other classes
-    public void moveToHomeActivity() {
-        Intent homeActivity = new Intent(this, home.class);
-        startActivity(homeActivity);
-    }
 
     @Override
     public void onStart() {
@@ -46,7 +38,7 @@ public class StudentRegistration extends AppCompatActivity {
         // Check if user is signed in (non-null) and move to the home activity.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            moveToHomeActivity();
+            appNavigation.moveToHomeActivity();
         }
     }
 
@@ -54,6 +46,7 @@ public class StudentRegistration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registration);
+        appNavigation = new Navigation(this,StudentRegistration.this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -112,19 +105,15 @@ public class StudentRegistration extends AppCompatActivity {
             }
 
             mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                moveToHomeActivity();
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()){
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            appNavigation.moveToHomeActivity();
 
-                            } else {
-                                Toast.makeText(StudentRegistration.this, "Unable to create account", Toast.LENGTH_SHORT).show();
-                            }
+                        } else {
+                            Toast.makeText(StudentRegistration.this, "Unable to create account", Toast.LENGTH_SHORT).show();
                         }
                     });
-
         });
 
         // go to main activity on click

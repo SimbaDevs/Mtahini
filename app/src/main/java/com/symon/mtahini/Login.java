@@ -25,6 +25,7 @@ public class Login extends AppCompatActivity {
     EditText passwordInput;
 
     private FirebaseAuth mAuth;
+    Navigation appNavigation;
 
     @Override
     public void onStart() {
@@ -32,17 +33,9 @@ public class Login extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            moveToHomeActivity();
+           appNavigation.moveToHomeActivity();
         }
     }
-    /**
-     * reload - changes the activity to the home activity
-     */
-    public void moveToHomeActivity() {
-        Intent homeActivity = new Intent(this, home.class);
-        startActivity(homeActivity);
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +43,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+        appNavigation = new Navigation(this, Login.this);
 
         imageButton = findViewById(R.id.arrowButton);
         regText = findViewById(R.id.register_student_text);
@@ -77,14 +71,11 @@ public class Login extends AppCompatActivity {
                     }
 
                     mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()){
-                                        moveToHomeActivity();
-                                    } else {
-                                        Toast.makeText(Login.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
-                                    }
+                            .addOnCompleteListener(this, task -> {
+                                if (task.isSuccessful()){
+                                    appNavigation.moveToHomeActivity();
+                                } else {
+                                    Toast.makeText(Login.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
                                 }
                             });
                 }
