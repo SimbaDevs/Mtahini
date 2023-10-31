@@ -100,20 +100,21 @@
         android:paddingStart="5dp"
         android:autofillHints="password"
         tools:ignore="RtlSymmetry"/>
-    <TextView
-        android:layout_width="match_parent"
+
+    <ProgressBar
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_marginTop="20dp"
-        android:textFontWeight="400"
-        android:textColor="@color/light_blue"
-        android:text="@string/forgot"
-        tools:ignore="UnusedAttribute" />
+        android:id="@+id/progressBar"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/blue_progress_bar"
+        android:visibility="gone"
+        />
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/reg_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/blue_background_button"
         android:text="@string/registerNoLine"
         android:textFontWeight="700"

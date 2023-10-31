@@ -29,4 +29,5 @@
     <string name="lec_no_account">Not yet registered?</string>
     <string name="lectureLognoLine">Lecture Login</string>
     <string name="re_enter_password">Repeat Password</string>
+    <string name="home_msg">Hello, you\'re seeing this message because you have successfully logged in to the app.</string>
 </resources>

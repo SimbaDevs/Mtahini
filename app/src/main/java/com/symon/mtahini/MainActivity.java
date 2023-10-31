@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.login_text_view);
 //        registerText = findViewById(R.id.register_lec_text);
-        studentRegButton = findViewById(R.id.register_student_button);
+        studentRegButton = findViewById(R.id.student_reg_button);
         lecturerLoginButton = findViewById(R.id.lecturer_login_button);
 
         textView.setOnClickListener(
