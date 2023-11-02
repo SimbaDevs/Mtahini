@@ -30,4 +30,8 @@
     <string name="lectureLognoLine">Lecture Login</string>
     <string name="re_enter_password">Repeat Password</string>
     <string name="home_msg">Hello, you\'re seeing this message because you have successfully logged in to the app.</string>
+    <string name="generate_report">Generate Reports</string>
+    <string name="student_marks">View and edit student marks</string>
+    <string name="summary">Generate Summary</string>
+    <string name="student_accounts">View student accounts</string>
 </resources>

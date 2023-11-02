@@ -18,11 +18,19 @@ public class Navigation {
     /**
      * reload - changes the activity to the home activity
      */
-
     public void moveToHomeActivity() {
         Intent homeActivity = new Intent(currentClass, home.class);
         homeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         currentActivity.startActivity(homeActivity);
+    }
+
+    /**
+     * moveTo - change to any activity
+     * @param destination - the activity to move to
+     */
+    public void moveTo(Class destination){
+        Intent newIntent = new Intent(currentActivity, destination);
+        currentActivity.startActivity(newIntent);
     }
 
 }

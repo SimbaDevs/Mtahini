@@ -12,6 +12,7 @@ public class home extends AppCompatActivity {
     Button logOutButton;
     FirebaseAuth auth;
 
+//    Navigation navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,7 @@ public class home extends AppCompatActivity {
         logOutButton.setOnClickListener(
                 v -> {
                     auth.signOut();
+//                    navigation.moveTo(MainActivity.class);
                     Intent mainActivity = new Intent(this, MainActivity.class);
                     startActivity(mainActivity);
                 }
