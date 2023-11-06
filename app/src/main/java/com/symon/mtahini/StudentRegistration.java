@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
 
+
+// this is in a new branch
 public class StudentRegistration extends AppCompatActivity {
 
     EditText name_input, email_input, password_input, confirm_password_input;
