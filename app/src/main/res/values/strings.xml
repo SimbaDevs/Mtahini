@@ -34,4 +34,6 @@
     <string name="student_marks">View and edit student marks</string>
     <string name="summary">Generate Summary</string>
     <string name="student_accounts">View student accounts</string>
+    <string name="enter_Reg">Enter Registration Number</string>
+    <string name="reg_number">Registration number</string>
 </resources>
