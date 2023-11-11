@@ -1,5 +1,6 @@
 package com.symon.mtahini;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,11 +12,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -110,6 +117,37 @@ public class StudentRegistration extends AppCompatActivity {
                     .addOnFailureListener(
                     e -> Log.d("DB", Objects.requireNonNull(e.getLocalizedMessage()))
             );
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (!(snapshot.child("Users").child("regNumber").exists())){
+                        HashMap<String, Object> userDataMap = new HashMap<>();
+                        userDataMap.put("regNumber", regNumber);
+                        userDataMap.put("email", email);
+                        userDataMap.put("name", name);
+                        userDataMap.put("password", password);
+
+                        reference.child("Users").child("regNumber").updateChildren(userDataMap)
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(StudentRegistration.this, "Account created successfully", Toast.LENGTH_SHORT).show();
+                                        appNavigation.moveToHomeActivity();
+                                    }
+                                    else {
+                                        Toast.makeText(StudentRegistration.this, "Database Error!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    } else {
+                        Toast.makeText(StudentRegistration.this, "User already exists!", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         });
 
         // go to main activity on click

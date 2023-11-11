@@ -1,6 +1,5 @@
 package com.symon.mtahini;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,10 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -29,7 +25,8 @@ public class Login extends AppCompatActivity {
     Button loginButton;
     TextView regText;
     EditText emailInput;
-    EditText passwordInput;
+    TextInputLayout passwordInputLayout;
+    String passwordInput;
     String email, password;
 
     private FirebaseAuth mAuth;
@@ -66,7 +63,7 @@ public class Login extends AppCompatActivity {
         imageButton = findViewById(R.id.arrowButton);
         regText = findViewById(R.id.register_student_text);
         emailInput = findViewById(R.id.email_edit_text);
-        passwordInput = findViewById(R.id.password_edit_text);
+        passwordInputLayout = findViewById(R.id.password_edit_text);
         loginButton = findViewById(R.id.login_button);
         progressBar = findViewById(R.id.progressBarLogin);
 
@@ -75,7 +72,8 @@ public class Login extends AppCompatActivity {
                 v -> {
                     startSignUp();
                     email = emailInput.getText().toString().trim();
-                    password = passwordInput.getText().toString().trim();
+                    passwordInput = String.valueOf(passwordInputLayout.getEditText());
+                    password = passwordInput;
 
                     if (String.valueOf(email).isEmpty()) {
                         emailInput.setError("Email address cannot be empty!");
@@ -84,24 +82,27 @@ public class Login extends AppCompatActivity {
                         return;
                     }
 
-                    if (String.valueOf(password).isEmpty()) {
+                    /*if (String.valueOf(password).isEmpty()) {
                         passwordInput.setError("Password field cannot be empty!");
                         passwordInput.requestFocus();
                         passwordInput.setBackgroundResource(R.drawable.alert_bg);
                         return;
-                    }
+                    }*/
 
                     mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(this, task -> {
-                                if (task.isSuccessful()) {
-                                    appNavigation.moveToHomeActivity();
-                                } else {
-                                    signUpComplete();
-                                    Toast.makeText(Login.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnFailureListener(
-                                    e -> Log.d("FB_AUTH", Objects.requireNonNull(e.getLocalizedMessage()))
-                            );
+                        .addOnCompleteListener(this, task -> {
+                            if (task.isSuccessful()) {
+                                Log.d("FB_AUTH", "Login successful");
+                                Toast.makeText(this, "Access granted", Toast.LENGTH_SHORT).show();
+                                appNavigation.moveToHomeActivity();
+                            } else {
+                                Log.d("FB_AUTH", "Login unsuccessful");
+                                signUpComplete();
+                                Toast.makeText(Login.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(
+                            e -> Log.d("FB_AUTH", Objects.requireNonNull(e.getLocalizedMessage()))
+                    );
                 }
         );
 
