@@ -37,7 +37,7 @@
     <string name="enter_Reg">Enter Registration Number</string>
     <string name="reg_number">Registration number</string>
     <string name="dummy_email">doe.john21@dkut.ac.ke</string>
-    <string name="dummy_registration">C026-01-1234/2021</string>
+    <string name="dummy_registration">C026–01–1234/2021</string>
     <string name="dummy_course">Bsc Computer Science</string>
     <string name="dummy_number">10</string>
     <string name="units">Units Registered</string>
@@ -46,4 +46,26 @@
     <string name="dummy_student_name">Student Name</string>
     <string name="register_new_course">Register New Course</string>
     <string name="registered_courses">Registered Courses</string>
+    <string name="mobile_application_programming">Mobile Application Programming</string>
+    <string name="save">save</string>
+    <string name="compiler_construction">Compiler Construction</string>
+    <string name="toc">Theory of Computation</string>
+    <string name="simulation">Simulation and Modelling</string>
+    <string name="multimedia">Multimedia Systems</string>
+    <string name="research">Research Methodology</string>
+    <string name="DAA">Design and Analysis of Algorithms</string>
+    <string name="SWE">Software Engineering</string>
+    <string name="AI">Artificial Intelligence</string>
+    <string name="IAP">Internet Application Programming</string>
+    <string name="map_save_toggle_switch_description">Mobile application programming toggle switch</string>
+    <string name="SWE_save_toggle_switch_description">Software Engineering toggle switch</string>
+    <string name="IAP_save_toggle_switch_description">Internet Application Programming toggle switch</string>
+    <string name="toc_save_toggle_switch_description">Theory of Computation toggle switch</string>
+    <string name="multimedia_save_toggle_switch_description">Multimedia Systems toggle switch</string>
+    <string name="DAA_save_toggle_switch_description">Design and Analysis of Algorithms toggle switch</string>
+    <string name="AI_save_toggle_switch_description">Artificial Intelligence toggle switch</string>
+    <string name="simulation_save_toggle_switch_description">Simulation and Modelling toggle switch</string>
+    <string name="research_save_toggle_switch_description">Research Methodology toggle switch</string>
+    <string name="compiler_save_toggle_switch_description">Compiler Construction toggle switch</string>
+    <string name="cancel">Cancel</string>
 </resources>

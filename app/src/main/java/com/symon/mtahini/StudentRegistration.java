@@ -37,7 +37,7 @@ public class StudentRegistration extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and move to the home activity.
+        // Check if user is signed in (non-null) and move to the Home activity.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             appNavigation.moveToHomeActivity();

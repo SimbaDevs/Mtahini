@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class registerCourse extends AppCompatActivity {
+public class RegisterCourse extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

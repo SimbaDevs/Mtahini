@@ -113,8 +113,7 @@ public class Login extends AppCompatActivity {
         );
         regText.setOnClickListener(
                 v -> {
-                    Intent regActivity = new Intent(this, StudentRegistration.class);
-                    startActivity(regActivity);
+                    appNavigation.moveTo(StudentRegistration.class);
                 }
         );
     }

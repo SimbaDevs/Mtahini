@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class LecturerLogin extends AppCompatActivity {
     ImageButton arrowButton;
     TextView registerText;
+    Navigation appNavigation = new Navigation(this, LecturerLogin.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +21,7 @@ public class LecturerLogin extends AppCompatActivity {
         registerText = findViewById(R.id.register_lec_text);
 
         arrowButton.setOnClickListener(
-                v  -> {
-                    Intent backToMain = new Intent(this, MainActivity.class);
-                    startActivity(backToMain);
-                }
+                v  -> { appNavigation.moveTo(MainActivity.class);}
         );
     }
 }

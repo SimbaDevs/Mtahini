@@ -13,16 +13,16 @@
         android:theme="@style/Theme.Mtahini"
         tools:targetApi="31">
         <activity
-            android:name=".registerCourse"
+            android:name=".RegisterCourse"
             android:exported="false" />
         <activity
             android:name=".Student_home_page"
             android:exported="false" />
         <activity
-            android:name=".adminLandingPage"
+            android:name=".AdminLandingPage"
             android:exported="false" />
         <activity
-            android:name=".home"
+            android:name=".Home"
             android:exported="false" />
         <activity
             android:name=".LecturerLogin"
