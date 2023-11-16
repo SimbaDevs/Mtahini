@@ -70,7 +70,6 @@ public class Login extends AppCompatActivity {
 
         loginButton.setOnClickListener(
                 v -> {
-                    startSignUp();
                     email = emailInput.getText().toString().trim();
                     passwordInput = String.valueOf(passwordInputLayout.getEditText());
                     password = passwordInput;
@@ -89,6 +88,7 @@ public class Login extends AppCompatActivity {
                         return;
                     }*/
 
+                    startSignUp();
                     mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, task -> {
                             if (task.isSuccessful()) {
@@ -101,15 +101,14 @@ public class Login extends AppCompatActivity {
                                 Toast.makeText(Login.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(
-                            e -> Log.d("FB_AUTH", Objects.requireNonNull(e.getLocalizedMessage()))
+                            e -> Log.d("FB_AUTH ___", Objects.requireNonNull(e.getLocalizedMessage()))
                     );
                 }
         );
 
         imageButton.setOnClickListener(
                 v -> {
-                    Intent previousPage = new Intent(this, MainActivity.class);
-                    startActivity(previousPage);
+                    appNavigation.moveTo(Student_home_page.class);
                 }
         );
         regText.setOnClickListener(

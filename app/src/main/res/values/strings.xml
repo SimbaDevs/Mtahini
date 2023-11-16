@@ -36,4 +36,14 @@
     <string name="student_accounts">View student accounts</string>
     <string name="enter_Reg">Enter Registration Number</string>
     <string name="reg_number">Registration number</string>
+    <string name="dummy_email">doe.john21@dkut.ac.ke</string>
+    <string name="dummy_registration">C026-01-1234/2021</string>
+    <string name="dummy_course">Bsc Computer Science</string>
+    <string name="dummy_number">10</string>
+    <string name="units">Units Registered</string>
+    <string name="dummy_cardview_course">CCS 3211: Mobile Application Programming</string>
+    <string name="dummy_teacher_name">Mr Opondo</string>
+    <string name="dummy_student_name">Student Name</string>
+    <string name="register_new_course">Register New Course</string>
+    <string name="registered_courses">Registered Courses</string>
 </resources>
