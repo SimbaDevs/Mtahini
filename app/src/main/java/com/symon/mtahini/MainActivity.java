@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
         lecturerLoginButton.setOnClickListener(
-                v -> {appNavigation.moveTo(LecturerLogin.class);}
+                v -> {appNavigation.moveTo(LecturerLanding.class);}
         );
 
     }

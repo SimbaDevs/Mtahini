@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="350dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="5dp"
@@ -94,20 +94,22 @@
         android:textSize="16sp"
         android:textColor="@color/black"/>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:passwordToggleEnabled="true"
         tools:ignore="RtlSymmetry">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="@string/enter_password"
             android:layout_marginTop="2dp"
-            android:paddingStart="5dp"
+            android:autofillHints="password"
             android:background="@drawable/input_border"
+            android:hint="@string/enter_password"
             android:inputType="textPassword"
-            android:autofillHints="password"/>
+            android:paddingStart="5dp"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
@@ -118,12 +120,12 @@
         android:textSize="16sp"
         android:textColor="@color/black"/>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/confirm_password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:passwordToggleEnabled="true"
         tools:ignore="RtlSymmetry">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirm_password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:hint="@string/enter_password"

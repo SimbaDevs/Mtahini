@@ -11,27 +11,24 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 
 public class StudentRegistration extends AppCompatActivity {
 
-    EditText name_input, email_input,reg_number_input, password_input, confirm_password_input;
+    EditText name_input, email_input,reg_number_input;
+    TextInputEditText password_input, confirm_password_input;
+    Navigation appNavigation = new Navigation(this,StudentRegistration.this);
     ImageButton imageButton;
     Button register_button;
     TextView loginTextView;
-    Navigation appNavigation;
     String name, email, regNumber, password, confirm_password;
-    String regexPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+//    String regexPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
-    FirebaseDatabase database;
-    DatabaseReference reference;
     protected FirebaseAuth mAuth;
 
     @Override
@@ -46,9 +43,9 @@ public class StudentRegistration extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registration);
-        appNavigation = new Navigation(this,StudentRegistration.this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -81,7 +78,7 @@ public class StudentRegistration extends AppCompatActivity {
                 confirm_password_input.setBackgroundResource(R.drawable.alert_bg);
             }
 
-            boolean isStrong = Pattern.matches(regexPattern, password);
+//            boolean isStrong = Pattern.matches(regexPattern, password);
 /*
             if (!(isStrong)){
                 password_input.setError("Password is not strong enough!");
@@ -95,6 +92,8 @@ public class StudentRegistration extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
+                            assert user != null;
+                            user.getUid();
                             appNavigation.moveToHomeActivity();
 
                         } else {

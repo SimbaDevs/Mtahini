@@ -36,7 +36,7 @@
     <string name="student_accounts">View student accounts</string>
     <string name="enter_Reg">Enter Registration Number</string>
     <string name="reg_number">Registration number</string>
-    <string name="dummy_email">doe.john21@dkut.ac.ke</string>
+    <string name="dummy_email">doe.john21@students.dkut.ac.ke</string>
     <string name="dummy_registration">C026–01–1234/2021</string>
     <string name="dummy_course">Bsc Computer Science</string>
     <string name="dummy_number">10</string>
@@ -44,7 +44,7 @@
     <string name="dummy_cardview_course">CCS 3211: Mobile Application Programming</string>
     <string name="dummy_teacher_name">Mr Opondo</string>
     <string name="dummy_student_name">Student Name</string>
-    <string name="register_new_course">Register New Course</string>
+    <string name="register_new_course">New Course</string>
     <string name="registered_courses">Registered Courses</string>
     <string name="mobile_application_programming">Mobile Application Programming</string>
     <string name="save">save</string>
@@ -68,4 +68,16 @@
     <string name="research_save_toggle_switch_description">Research Methodology toggle switch</string>
     <string name="compiler_save_toggle_switch_description">Compiler Construction toggle switch</string>
     <string name="cancel">Cancel</string>
+    <string name="dummy_lec_name">Mr David Opondo</string>
+    <string name="dummy_dept">Computer Science Dpt</string>
+    <string name="dummy_lec_email">opondo.david@dkut.ac.ke</string>
+    <string name="lec_unit">Unit:</string>
+    <string name="dummy_lec_unit">CCS 3211: Mobile Application Programming</string>
+    <string name="enter_cat_1_marks">Enter CAT 1 Marks</string>
+    <string name="enter_cat_2_marks">Enter CAT 2 Marks</string>
+    <string name="enter_exam_marks">Enter exam Marks</string>
+    <string name="generate__std_report">Generate student report</string>
+    <string name="enter_assign_1_marks">Enter assignment 1 Marks</string>
+    <string name="enter_assign_2_marks">Enter assignment 2 Marks</string>
+    <string name="activity">Activities</string>
 </resources>
