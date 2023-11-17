@@ -80,4 +80,10 @@
     <string name="enter_assign_1_marks">Enter assignment 1 Marks</string>
     <string name="enter_assign_2_marks">Enter assignment 2 Marks</string>
     <string name="activity">Activities</string>
+    <string name="get_report">Get Report</string>
+    <string name="enter_marks">Enter Marks</string>
+    <string name="marks_inputs">Marks Input cards</string>
+    <string name="name_">Name:</string>
+    <string name="reg_num">Reg no.:</string>
+    <string name="enter_student_marks_here">Enter student marks here</string>
 </resources>

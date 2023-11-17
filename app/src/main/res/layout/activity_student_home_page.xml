@@ -580,11 +580,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Log out"
-            android:textColor="@color/white"
+            android:text="@string/get_report"
+            android:textColor="#0CFFEA"
             android:textStyle="bold"
             android:textSize="24sp"
-            android:background="@drawable/red_bg_button"/>
+            android:background="@drawable/blue_background_button"/>
         <Button
             android:id="@+id/register_new_courses"
             android:layout_width="0dp"
@@ -598,8 +598,5 @@
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
