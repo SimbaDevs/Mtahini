@@ -88,8 +88,7 @@
         android:layout_gravity="center"
         android:indeterminate="true"
         android:indeterminateDrawable="@drawable/blue_progress_bar"
-        android:visibility="gone"
-        />
+        android:visibility="gone"/>
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
@@ -99,29 +98,4 @@
         android:text="@string/login_no_line"
         android:textFontWeight="700"
         android:textColor="@color/white"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:text="@string/no_account"
-            />
-        <TextView
-            android:id="@+id/register_student_text"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="16sp"
-            android:textColor="#575DFB"
-            android:textStyle="bold"
-            android:text="@string/register"
-            android:layout_marginStart="5dp"
-            />
-    </LinearLayout>
 </LinearLayout>

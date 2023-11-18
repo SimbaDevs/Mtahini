@@ -75,10 +75,10 @@
     <string name="dummy_lec_unit">CCS 3211: Mobile Application Programming</string>
     <string name="enter_cat_1_marks">Enter CAT 1 Marks</string>
     <string name="enter_cat_2_marks">Enter CAT 2 Marks</string>
-    <string name="enter_exam_marks">Enter exam Marks</string>
+    <string name="enter_exam_marks">Enter Exam Marks</string>
     <string name="generate__std_report">Generate student report</string>
-    <string name="enter_assign_1_marks">Enter assignment 1 Marks</string>
-    <string name="enter_assign_2_marks">Enter assignment 2 Marks</string>
+    <string name="enter_assign_1_marks">Enter Assignment 1 Marks</string>
+    <string name="enter_assign_2_marks">Enter Assignment 2 Marks</string>
     <string name="activity">Activities</string>
     <string name="get_report">Get Report</string>
     <string name="enter_marks">Enter Marks</string>
@@ -86,4 +86,9 @@
     <string name="name_">Name:</string>
     <string name="reg_num">Reg no.:</string>
     <string name="enter_student_marks_here">Enter student marks here</string>
+    <string name="admit_new_lecturer">Admit new lecturer</string>
+    <string name="enter_marks_cat_1">Enter CAT 1 marks</string>
+    <string name="enter_assignment_2_marks">Enter assignment 2 marks</string>
+    <string name="control_panel">Control Panel</string>
+    <string name="log_out">Log out</string>
 </resources>

@@ -11,7 +11,7 @@ public class Student_home_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_home_page);
+        setContentView(R.layout.list_student_home_page);
 
         Button registerCourseBtn = findViewById(R.id.register_new_courses);
 
