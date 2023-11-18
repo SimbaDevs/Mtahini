@@ -13,20 +13,20 @@ registered student independently from their (lecturers’) devices. The entered 
 destined to the same *cloud database*. For the time being, it is assumed that each lecturer
 teaches *only one* course.
 3. Enable the administrator to generate a report showing:
-  a. Students who have passed all courses in a semester.
-  b. Students who have passed all courses in a year.
-  c. Students who have failed one or more courses in a semester and the courses that they
+    - Students who have passed all courses in a semester.
+    - Students who have passed all courses in a year.
+    - Students who have failed one or more courses in a semester and the courses that they
   failed (List of Fails).
-  d. Students who have failed one or more courses in a year and the courses that they failed
+    - Students who have failed one or more courses in a year and the courses that they failed
   (List of Supplementary Examinations)
-  e. Students who were not able to do examinations because of school fees or medical
+    - Students who were not able to do examinations because of school fees or medical
   reasons (List of specials)
-  f. Students who do not have marks (both CATs and Exam Marks) in at least one course.
-  g. Students who registered but are missing marks in all the course.
-  h. Students who are attempting a course for the second time (having failed in the first
+    - Students who do not have marks (both CATs and Exam Marks) in at least one course.
+    - Students who registered but are missing marks in all the course.
+    - Students who are attempting a course for the second time (having failed in the first
   attempt).
-4. *Not* allow a lecturer to edit marks entered.
-5. *Allow* the administrator to edit the entered marks.
-6. *Print a summary* of all marks scored per course (per semester and per year) per student for a
+5. *Not* allow a lecturer to edit marks entered.
+6. *Allow* the administrator to edit the entered marks.
+7. *Print a summary* of all marks scored per course (per semester and per year) per student for a
 class e.g CS 3.2, total marks for all courses per student, mean per student and a
 recommendation per student (e.g pass, fail, 2 supplementary exams etc).
