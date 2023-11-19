@@ -2,17 +2,16 @@ package com.symon.mtahini;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class home extends AppCompatActivity {
+public class Home extends AppCompatActivity {
     Button logOutButton;
     FirebaseAuth auth;
 
-//    Navigation navigation;
+    Navigation navigation = new Navigation(this, Home.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,9 +21,7 @@ public class home extends AppCompatActivity {
         logOutButton.setOnClickListener(
                 v -> {
                     auth.signOut();
-//                    navigation.moveTo(MainActivity.class);
-                    Intent mainActivity = new Intent(this, MainActivity.class);
-                    startActivity(mainActivity);
+                    navigation.moveTo(MainActivity.class);
                 }
         );
     }

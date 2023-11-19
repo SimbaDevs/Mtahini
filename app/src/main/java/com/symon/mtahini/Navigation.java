@@ -16,10 +16,10 @@ public class Navigation {
         this.currentActivity = currentActivity;
     }
     /**
-     * reload - changes the activity to the home activity
+     * reload - changes the activity to the Home activity
      */
     public void moveToHomeActivity() {
-        Intent homeActivity = new Intent(currentClass, home.class);
+        Intent homeActivity = new Intent(currentClass, Home.class);
         homeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         currentActivity.startActivity(homeActivity);
     }

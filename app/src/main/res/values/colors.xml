@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_blue">#575DFB</color>
+    <color name="green">#31D638</color>
+    <color name="car_btn_color">#222929</color>
 </resources>
