@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Mtahini"
         tools:targetApi="31">
         <activity
+            android:name=".RegisterLecturer"
+            android:exported="false" />
+        <activity
             android:name=".ExamMarks"
             android:exported="false" />
         <activity
@@ -25,10 +28,10 @@
             android:name=".Cat2Marks"
             android:exported="false" />
         <activity
-            android:name=".CatMarksInput"
+            android:name=".Cat1Marks"
             android:exported="false" />
         <activity
-            android:name=".LecturerLanding"
+            android:name=".authentication.LecturerLanding"
             android:exported="false" />
         <activity
             android:name=".RegisterCourse"
@@ -43,13 +46,13 @@
             android:name=".Home"
             android:exported="false" />
         <activity
-            android:name=".LecturerLogin"
+            android:name=".authentication.LecturerLogin"
             android:exported="false" />
         <activity
-            android:name=".StudentRegistration"
+            android:name=".authentication.StudentRegistration"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".authentication.Login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

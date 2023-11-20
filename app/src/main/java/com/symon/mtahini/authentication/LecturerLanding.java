@@ -1,9 +1,13 @@
-package com.symon.mtahini;
+package com.symon.mtahini.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.symon.mtahini.Cat1Marks;
+import com.symon.mtahini.Navigation;
+import com.symon.mtahini.R;
 
 public class LecturerLanding extends AppCompatActivity {
 
@@ -17,7 +21,7 @@ public class LecturerLanding extends AppCompatActivity {
         button = findViewById(R.id.lec_assignment_1_button);
         button.setOnClickListener(
                 v -> {
-                    appNav.moveTo(CatMarksInput.class);
+                    appNav.moveTo(Cat1Marks.class);
                 }
         );
     }

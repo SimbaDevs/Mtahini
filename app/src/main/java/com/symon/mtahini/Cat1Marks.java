@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class CatMarksInput extends AppCompatActivity {
+public class Cat1Marks extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
