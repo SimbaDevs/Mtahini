@@ -1,8 +1,7 @@
-package com.symon.mtahini;
+package com.symon.mtahini.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +15,10 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.symon.mtahini.AdminLandingPage;
+import com.symon.mtahini.Navigation;
+import com.symon.mtahini.R;
+import com.symon.mtahini.Student_home_page;
 
 import java.util.Objects;
 
@@ -23,7 +26,6 @@ public class Login extends AppCompatActivity {
     ImageButton imageButton;
     ProgressBar progressBar;
     Button loginButton;
-    TextView regText;
     EditText emailInput;
     TextInputLayout passwordInputLayout;
     String passwordInput;
@@ -61,7 +63,6 @@ public class Login extends AppCompatActivity {
         appNavigation = new Navigation(this, Login.this);
 
         imageButton = findViewById(R.id.arrowButton);
-        regText = findViewById(R.id.register_student_text);
         emailInput = findViewById(R.id.email_edit_text);
         passwordInputLayout = findViewById(R.id.password_edit_text);
         loginButton = findViewById(R.id.login_button);
@@ -70,6 +71,7 @@ public class Login extends AppCompatActivity {
 
         loginButton.setOnClickListener(
                 v -> {
+                    appNavigation.moveTo(AdminLandingPage.class);
                     email = emailInput.getText().toString().trim();
                     passwordInput = String.valueOf(passwordInputLayout.getEditText());
                     password = passwordInput;
@@ -109,11 +111,6 @@ public class Login extends AppCompatActivity {
         imageButton.setOnClickListener(
                 v -> {
                     appNavigation.moveTo(Student_home_page.class);
-                }
-        );
-        regText.setOnClickListener(
-                v -> {
-                    appNavigation.moveTo(StudentRegistration.class);
                 }
         );
     }

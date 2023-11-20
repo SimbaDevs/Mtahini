@@ -1,4 +1,4 @@
-package com.symon.mtahini;
+package com.symon.mtahini.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,9 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.symon.mtahini.MainActivity;
+import com.symon.mtahini.Navigation;
+import com.symon.mtahini.R;
 
 import java.util.Objects;
 

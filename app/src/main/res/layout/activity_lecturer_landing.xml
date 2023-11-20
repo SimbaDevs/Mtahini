@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_margin="5dp"
-    tools:context=".LecturerLanding">
+    tools:context=".authentication.LecturerLanding">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/lecturer_card"

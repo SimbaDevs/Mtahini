@@ -19,7 +19,7 @@ public class Navigation {
      * reload - changes the activity to the Home activity
      */
     public void moveToHomeActivity() {
-        Intent homeActivity = new Intent(currentClass, Home.class);
+        Intent homeActivity = new Intent(currentClass, MainActivity.class);
         homeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         currentActivity.startActivity(homeActivity);
     }

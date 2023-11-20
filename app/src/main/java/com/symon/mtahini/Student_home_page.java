@@ -15,10 +15,6 @@ public class Student_home_page extends AppCompatActivity {
 
         Button registerCourseBtn = findViewById(R.id.register_new_courses);
 
-        registerCourseBtn.setOnClickListener(
-                v -> {
-                    navigation.moveTo(RegisterCourse.class);
-                }
-        );
+        registerCourseBtn.setOnClickListener(v -> navigation.moveTo(RegisterCourse.class));
     }
 }

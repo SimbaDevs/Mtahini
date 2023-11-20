@@ -21,7 +21,7 @@ public class Home extends AppCompatActivity {
         logOutButton.setOnClickListener(
                 v -> {
                     auth.signOut();
-                    navigation.moveTo(MainActivity.class);
+                    navigation.moveToHomeActivity();
                 }
         );
     }
