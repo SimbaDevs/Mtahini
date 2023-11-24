@@ -33,17 +33,6 @@ public class Login extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     Navigation appNavigation;
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            appNavigation.moveToHomeActivity();
-        }
-    }
-
     private void startSignUp() {
         progressBar.setVisibility(View.VISIBLE);
         loginButton.setVisibility(View.GONE);

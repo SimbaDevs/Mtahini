@@ -1,5 +1,8 @@
 package com.symon.mtahini.authentication;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,14 +14,23 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firestore.v1.FirestoreGrpc;
 import com.symon.mtahini.MainActivity;
 import com.symon.mtahini.Navigation;
 import com.symon.mtahini.R;
+import com.symon.mtahini.Student_home_page;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 
 public class StudentRegistration extends AppCompatActivity {
@@ -33,17 +45,8 @@ public class StudentRegistration extends AppCompatActivity {
 //    String regexPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
     protected FirebaseAuth mAuth;
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and move to the Home activity.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            appNavigation.moveToHomeActivity();
-        }
-    }
-
+    FirebaseFirestore fStore;
+    String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,6 +54,7 @@ public class StudentRegistration extends AppCompatActivity {
         setContentView(R.layout.activity_student_registration);
 
         mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         imageButton = findViewById(R.id.stdRegArrowButton);
         loginTextView = findViewById(R.id.login_text_view);
@@ -81,6 +85,13 @@ public class StudentRegistration extends AppCompatActivity {
                 confirm_password_input.setBackgroundResource(R.drawable.alert_bg);
             }
 
+            String studentPattern = ".*@students\\.dekut\\.ac\\.ke";
+            boolean isStudent = Pattern.matches(studentPattern,email);
+            if(!(isStudent)){
+                email_input.setError("email must end with @students.dekut.ac.kr");
+                email_input.requestFocus();
+                return;
+            }
 //            boolean isStrong = Pattern.matches(regexPattern, password);
 /*
             if (!(isStrong)){
@@ -92,12 +103,18 @@ public class StudentRegistration extends AppCompatActivity {
             }
 */
             mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, task -> {
+                    .addOnCompleteListener(StudentRegistration.this, task -> {
                         if (task.isSuccessful()){
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            assert user != null;
-                            user.getUid();
-                            appNavigation.moveToHomeActivity();
+                            Log.d(TAG, "createUserWithEmail:success");
+                            userID = mAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = fStore.collection("Users").document(userID);
+                            Map<String,Object> user = new HashMap<>();
+                            user.put("FullName",name);
+                            user.put("RegNo",regNumber);
+                            user.put("email",email);
+                            user.put("password",password);
+                            documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "onSuccess: user profile is created for" + userID)).addOnFailureListener(e -> Log.d(TAG,"onFailure: "+ e));
+                            appNavigation.moveTo(Student_home_page.class);
 
                         } else {
                             Toast.makeText(StudentRegistration.this, "Unable to create account", Toast.LENGTH_SHORT).show();
