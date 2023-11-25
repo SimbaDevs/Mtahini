@@ -101,9 +101,4 @@
     <string name="edit_cat_2">Edit CAT 2 Marks</string>
     <string name="exam_edit_button">Edit Exam Marks</string>
     <string name="register_new_lecturer">Register New Lecturer</string>
-    <string-array name="departments">
-        <item>Computer Science dpt</item>
-        <item>Statistics dpt</item>
-        <item>Mathematics dpt</item>
-    </string-array>
 </resources>

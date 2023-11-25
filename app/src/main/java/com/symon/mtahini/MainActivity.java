@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.symon.mtahini.authentication.LecturerLanding;
+import com.symon.mtahini.authentication.LecturerLogin;
 import com.symon.mtahini.authentication.Login;
 import com.symon.mtahini.authentication.StudentRegistration;
 
@@ -27,6 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         textView.setOnClickListener(v -> appNavigation.moveTo(Login.class));
         studentRegButton.setOnClickListener(v -> appNavigation.moveTo(StudentRegistration.class));
-        lecturerLoginButton.setOnClickListener(v -> appNavigation.moveTo(LecturerLanding.class));
+        lecturerLoginButton.setOnClickListener(v -> appNavigation.moveTo(LecturerLogin.class));
     }
 }
