@@ -103,7 +103,7 @@ public class courseregistration extends AppCompatActivity {
             // Save the registration data to the database using the generated key
             databaseReference.child(registrationKey).setValue(registration)
                     .addOnCompleteListener(task -> {
-                        // Reset the form after successful submission
+                        // Reset form after successful submission
                         editTextRegistrationNumber.getText().clear();
                         editTextName.getText().clear();
                         editTextEmail.getText().clear();

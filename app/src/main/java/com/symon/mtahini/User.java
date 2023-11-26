@@ -22,7 +22,6 @@ public class User {
         this.email = email;
         this.courses = courses;
     }
-
     public String getRegistrationNumber() {
         return registrationNumber;
     }
