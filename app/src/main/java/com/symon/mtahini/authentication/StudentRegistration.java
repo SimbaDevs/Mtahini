@@ -47,6 +47,7 @@ public class StudentRegistration extends AppCompatActivity {
     protected FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
+    Student student = new Student();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -85,8 +86,8 @@ public class StudentRegistration extends AppCompatActivity {
                 confirm_password_input.setBackgroundResource(R.drawable.alert_bg);
             }
 
-            String studentPattern = ".*@students\\.dekut\\.ac\\.ke";
-            boolean isStudent = Pattern.matches(studentPattern,email);
+            String stdRegPattern = ".*@students\\.dekut\\.ac\\.ke";
+            boolean isStudent = Pattern.matches(stdRegPattern,email);
             if(!(isStudent)){
                 email_input.setError("email must end with @students.dekut.ac.kr");
                 email_input.requestFocus();
@@ -107,13 +108,13 @@ public class StudentRegistration extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Log.d(TAG, "createUserWithEmail:success");
                             userID = mAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("Users").document(userID);
-                            Map<String,Object> user = new HashMap<>();
-                            user.put("FullName",name);
-                            user.put("RegNo",regNumber);
-                            user.put("email",email);
-                            user.put("password",password);
-                            documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "onSuccess: user profile is created for" + userID)).addOnFailureListener(e -> Log.d(TAG,"onFailure: "+ e));
+                            student.setName(name);
+                            student.setEmail(email);
+                            student.setRegNo(regNumber);
+                            student.setPwd(password);
+
+                            fStore.collection("Students").document(regNumber).set(student);
+                            Toast.makeText(this, "User should be added!", Toast.LENGTH_SHORT).show();
                             appNavigation.moveTo(Student_home_page.class);
 
                         } else {
