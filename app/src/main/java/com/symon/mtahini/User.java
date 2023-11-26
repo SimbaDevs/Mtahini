@@ -13,10 +13,6 @@ public class User {
     private String email;
     private List<String> courses;
 
-    // Add an empty constructor for Firebase
-    public User() {
-    }
-
     public User(String registrationNumber, String name, String email, List<String> courses) {
         validateRegistrationNumber(registrationNumber);
         validateEmail(email);
@@ -42,11 +38,6 @@ public class User {
     public List<String> getCourses() {
         return courses;
     }
-
-    public boolean isSameEmail(String otherEmail) {
-        return email.equalsIgnoreCase(otherEmail);
-    }
-
     private void validateRegistrationNumber(String registrationNumber) {
         Pattern pattern = Pattern.compile(REGISTRATION_NUMBER_PATTERN);
         Matcher matcher = pattern.matcher(registrationNumber);
