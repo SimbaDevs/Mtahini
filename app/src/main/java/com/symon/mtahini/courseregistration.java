@@ -1,8 +1,7 @@
 package com.symon.mtahini;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,12 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class courseregistration extends AppCompatActivity {
 
@@ -29,7 +27,7 @@ public class courseregistration extends AppCompatActivity {
     private ArrayAdapter<String> courseAdapter;
     private List<String> selectedCourses;
 
-    private FirebaseFirestore firestore;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,33 +62,29 @@ public class courseregistration extends AppCompatActivity {
         listViewCourses.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         // Set item click listener for the ListView
-        listViewCourses.setOnItemClickListener((parent, view, position, id) -> handleCourseSelection(position));
+        listViewCourses.setOnItemClickListener((parent, view, position, id) -> {
+            // Handle item click to update the selected courses list
+            if (listViewCourses.isItemChecked(position)) {
+                // Check if the maximum limit of 5 courses is reached
+                if (selectedCourses.size() < 5) {
+                    selectedCourses.add(coursesList.get(position));
+                } else {
+                    // If the limit is reached, uncheck the item and show a toast
+                    listViewCourses.setItemChecked(position, false);
+                    Toast.makeText(courseregistration.this, "You can select up to 5 courses", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                selectedCourses.remove(coursesList.get(position));
+            }
+        });
 
-        // Initialize Firebase Firestore
-        firestore = FirebaseFirestore.getInstance();
+        // Initialize Firebase Database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("registrations");
 
         buttonSubmit.setOnClickListener(v -> submitRegistration());
     }
 
-    private void handleCourseSelection(int position) {
-        // Handle item click to update the selected courses list
-        if (listViewCourses.isItemChecked(position)) {
-            if (selectedCourses.size() < 5) {
-                selectedCourses.add(courseAdapter.getItem(position));
-            } else {
-                // If already 5 courses are selected, uncheck the item
-                listViewCourses.setItemChecked(position, false);
-                Toast.makeText(courseregistration.this, "You can select up to 5 courses", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            selectedCourses.remove(courseAdapter.getItem(position));
-        }
-    }
-
-    private boolean isValidEmail(String email) {
-        // Use Patterns.EMAIL_ADDRESS to validate email format
-        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
 
     private void submitRegistration() {
         // Get registration details
@@ -99,50 +93,34 @@ public class courseregistration extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
 
         // Validate registration details
-        if (!TextUtils.isEmpty(registrationNumber) && !TextUtils.isEmpty(name) && isValidEmail(email) && !selectedCourses.isEmpty()) {
-            // Create a User object with the selected courses
-            User user = new User(registrationNumber, name, email, selectedCourses);
+        if (!registrationNumber.isEmpty() && !name.isEmpty() && !email.isEmpty() && !selectedCourses.isEmpty()) {
+            // Generate a unique key for each registration
+            String registrationKey = databaseReference.push().getKey();
 
+            // Create a Registration object
+            User registration = new User(registrationNumber, name, email, selectedCourses);
 
-            addDataToFirestore(user);
+            // Save the registration data to the database using the generated key
+            databaseReference.child(registrationKey).setValue(registration)
+                    .addOnCompleteListener(task -> {
+                        // Reset the form after successful submission
+                        editTextRegistrationNumber.getText().clear();
+                        editTextName.getText().clear();
+                        editTextEmail.getText().clear();
+                        listViewCourses.clearChoices();
+                        selectedCourses.clear();
 
-            // Reset the form after successful submission
-            resetForm();
-
-            // Display a success message
-            Toast.makeText(courseregistration.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                        // Display a success message
+                        Toast.makeText(courseregistration.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        // Display an error message if the submission fails
+                        Toast.makeText(courseregistration.this, "Registration failed. Please try again.", Toast.LENGTH_SHORT).show();
+                        Log.e("TAG", "Registration failed", e);
+                    });
         } else {
             // Display an error message if any field is empty or no course is selected
             Toast.makeText(this, "Invalid input. Please check your entries.", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void addDataToFirestore(User user) {
-        // Create a map to store user data
-        Map<String, Object> userData = new HashMap<>();
-        userData.put("registrationNumber", user.getRegistrationNumber());
-        userData.put("name", user.getName());
-        userData.put("email", user.getEmail());
-        userData.put("selectedCourses", user.getCourses());
-
-        // Add data to Firestore
-        firestore.collection("users")
-                .add(userData)
-                .addOnSuccessListener(documentReference -> {
-                    // Handle success
-                    // You can log or handle success in any way you prefer
-                })
-                .addOnFailureListener(e -> {
-                    // Handle failure
-                    Toast.makeText(courseregistration.this, "Firestore Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                });
-    }
-
-    private void resetForm() {
-        editTextRegistrationNumber.getText().clear();
-        editTextName.getText().clear();
-        editTextEmail.getText().clear();
-        listViewCourses.clearChoices();
-        selectedCourses.clear();
     }
 }
