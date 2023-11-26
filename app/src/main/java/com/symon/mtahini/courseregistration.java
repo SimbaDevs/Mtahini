@@ -103,7 +103,7 @@ public class courseregistration extends AppCompatActivity {
             // Create a User object with the selected courses
             User user = new User(registrationNumber, name, email, selectedCourses);
 
-            // Add data to Firestore
+
             addDataToFirestore(user);
 
             // Reset the form after successful submission
