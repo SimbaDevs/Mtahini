@@ -21,6 +21,10 @@
             android:exported="false"
             />
         <activity
+            android:name=".RegisterLecturer"
+            android:exported="false"
+            />
+        <activity
             android:name=".courseregistration"
             android:exported="false"
             />

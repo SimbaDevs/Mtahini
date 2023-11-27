@@ -4,6 +4,7 @@ package com.symon.mtahini;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.EditText;
 
 public class Navigation {
 
@@ -33,4 +34,20 @@ public class Navigation {
         currentActivity.startActivity(newIntent);
     }
 
+    /**
+     * isFieldEmpty - check if an editText field is empty
+     * @param editText - the field to be checked
+     *  Return false or true
+     * */
+    public boolean isFieldEmpty(EditText editText){
+        String inputText = String.valueOf(editText.getText());
+
+        if (inputText.isEmpty()) {
+            editText.requestFocus();
+            editText.setError("This field cannot be empty");
+            return true;
+        }
+
+        return false;
+    }
 }
