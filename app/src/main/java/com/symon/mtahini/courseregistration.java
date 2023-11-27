@@ -34,9 +34,6 @@ public class courseregistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courseregistration);
 
-        editTextRegistrationNumber = findViewById(R.id.editTextRegistrationNumber);
-        editTextName = findViewById(R.id.editTextName);
-        editTextEmail = findViewById(R.id.editTextEmail);
         listViewCourses = findViewById(R.id.listViewCourses);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 

@@ -1,57 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textViewRegistration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registration Form"
-        android:textSize="24sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
-
-    <EditText
-        android:id="@+id/editTextRegistrationNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Registration Number"
-        android:inputType="text"
-        android:layout_below="@id/textViewRegistration"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        android:inputType="text"
-        android:layout_below="@id/editTextRegistrationNumber"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:layout_below="@id/editTextName"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/editTextEmail"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp">
 
@@ -60,24 +21,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register For Units"
-            android:textSize="20sp"
+            android:textSize="22sp"
+            android:textColor="@color/light_blue"
             android:textStyle="bold"
             android:layout_gravity="center"
-            android:layout_marginBottom="8dp"/
-
-        <ListView
-            android:id="@+id/listViewCourses"
+            android:layout_marginBottom="8dp"/>
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"/>
+            android:layout_height="540dp">
+            <ListView
+                android:id="@+id/listViewCourses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"/>
+        </ScrollView>
     </LinearLayout>
     <Button
+        android:layout_gravity="center"
         android:id="@+id/buttonSubmit"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
+        android:background="@drawable/blue_background_button"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="137dp"
         android:text="Submit" />
-</RelativeLayout>
+</LinearLayout>

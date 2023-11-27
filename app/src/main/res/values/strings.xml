@@ -92,7 +92,7 @@
     <string name="control_panel">Control Panel</string>
     <string name="log_out">Log out</string>
     <string name="staff_id">Enter staff ID</string>
-    <string name="stuff_id">Stuff ID Number</string>
+    <string name="stuff_id">Stuff ID</string>
     <string name="stuff_email">Stuff Email</string>
     <string name="department">Department</string>
     <string name="edit_cat_1">Edit CAT 1 Marks</string>
@@ -101,4 +101,7 @@
     <string name="edit_cat_2">Edit CAT 2 Marks</string>
     <string name="exam_edit_button">Edit Exam Marks</string>
     <string name="register_new_lecturer">Register New Lecturer</string>
+    <string name="subject">Subject</string>
+    <string name="account_password">Account Password</string>
+    <string name="set_password">Set password</string>
 </resources>

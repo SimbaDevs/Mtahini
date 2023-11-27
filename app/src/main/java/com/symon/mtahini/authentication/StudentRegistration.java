@@ -2,7 +2,6 @@ package com.symon.mtahini.authentication;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,21 +13,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firestore.v1.FirestoreGrpc;
 import com.symon.mtahini.MainActivity;
 import com.symon.mtahini.Navigation;
 import com.symon.mtahini.R;
-import com.symon.mtahini.Student_home_page;
+import com.symon.mtahini.StudentHomePage;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -115,7 +107,7 @@ public class StudentRegistration extends AppCompatActivity {
 
                             fStore.collection("Students").document(regNumber).set(student);
                             Toast.makeText(this, "User should be added!", Toast.LENGTH_SHORT).show();
-                            appNavigation.moveTo(Student_home_page.class);
+                            appNavigation.moveTo(StudentHomePage.class);
 
                         } else {
                             Toast.makeText(StudentRegistration.this, "Unable to create account", Toast.LENGTH_SHORT).show();

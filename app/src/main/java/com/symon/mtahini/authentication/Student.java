@@ -1,20 +1,38 @@
 package com.symon.mtahini.authentication;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Student {
     private String name, regNo, email, pwd, gender;
-    List<String> courses;
+    HashMap<String, Integer> courses;
 
-    public Student(String name, String regNo, String email, String pwd, List<String> courses) {
+    public Student(String name, String regNo, String email, String pwd, String gender, HashMap<String, Integer> courses) {
         this.name = name;
         this.regNo = regNo;
         this.email = email;
         this.pwd = pwd;
+        this.gender = gender;
         this.courses = courses;
     }
 
     public Student() {
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public HashMap<String, Integer> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(HashMap<String, Integer> courses) {
+        this.courses = courses;
     }
 
     public String getName() {
@@ -47,15 +65,5 @@ public class Student {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
-    }
-
-
-
-    public List<String> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<String> courses) {
-        this.courses = courses;
     }
 }

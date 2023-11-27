@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="courses">
+        <item>Mobile Application Programming</item>
+        <item>Compiler Construction</item>
+        <item>Theory of Computing</item>
+        <item>Multimedia Systems</item>
+        <item>Simulation And Modelling</item>
+        <item>Design And Analysis Of Algorithms</item>
+        <Item>Research Methodologies In Computer Science</Item>
+        <item>Artificial Intelligence</item>
+        <item>Software Engineering</item>
+        <item>Internet Application Programming</item>
+    </string-array>
+</resources>

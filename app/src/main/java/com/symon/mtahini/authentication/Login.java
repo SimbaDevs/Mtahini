@@ -9,16 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.symon.mtahini.AdminLandingPage;
 import com.symon.mtahini.Navigation;
 import com.symon.mtahini.R;
-import com.symon.mtahini.Student_home_page;
+import com.symon.mtahini.StudentHomePage;
+import com.symon.mtahini.courseregistration;
 
 import java.util.Objects;
 
@@ -85,21 +84,21 @@ public class Login extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.d("FB_AUTH", "Login successful");
                                 Toast.makeText(this, "Access granted", Toast.LENGTH_SHORT).show();
-                                appNavigation.moveToHomeActivity();
+                                appNavigation.moveTo(StudentHomePage.class);
                             } else {
                                 Log.d("FB_AUTH", "Login unsuccessful");
                                 signUpComplete();
                                 Toast.makeText(Login.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(
-                            e -> Log.d("FB_AUTH ___", Objects.requireNonNull(e.getLocalizedMessage()))
+                            e -> Log.d("FB_AUTH", Objects.requireNonNull(e.getLocalizedMessage()))
                     );
                 }
         );
 
         imageButton.setOnClickListener(
                 v -> {
-                    appNavigation.moveTo(Student_home_page.class);
+                    appNavigation.moveTo(courseregistration.class);
                 }
         );
     }

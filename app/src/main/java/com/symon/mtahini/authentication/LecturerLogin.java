@@ -18,7 +18,7 @@ import com.symon.mtahini.AdminLandingPage;
 import com.symon.mtahini.MainActivity;
 import com.symon.mtahini.Navigation;
 import com.symon.mtahini.R;
-import com.symon.mtahini.Student_home_page;
+import com.symon.mtahini.StudentHomePage;
 
 import java.util.regex.Pattern;
 
@@ -66,7 +66,7 @@ public class LecturerLogin extends AppCompatActivity {
                             if(isLec){
                                 startActivity(new Intent(LecturerLogin.this,LecturerLanding.class));
                             } else if (isStudent) {
-                                startActivity(new Intent(LecturerLogin.this, Student_home_page.class));
+                                startActivity(new Intent(LecturerLogin.this, StudentHomePage.class));
                             } else if (isAdmin) {
                                 startActivity(new Intent(LecturerLogin.this, AdminLandingPage.class));
                             }
