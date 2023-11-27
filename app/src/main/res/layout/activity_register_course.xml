@@ -334,7 +334,7 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/save_button"
+            android:id="@+id/course_save_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

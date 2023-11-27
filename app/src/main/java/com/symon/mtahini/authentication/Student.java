@@ -4,35 +4,27 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Student {
-    private String name, regNo, email, pwd, gender;
+    private String name, regNo, email, pwd, userId;
     HashMap<String, Integer> courses;
 
-    public Student(String name, String regNo, String email, String pwd, String gender, HashMap<String, Integer> courses) {
+    public Student(String name, String regNo, String email, String pwd, String userId, HashMap<String, Integer> courses) {
         this.name = name;
         this.regNo = regNo;
         this.email = email;
         this.pwd = pwd;
-        this.gender = gender;
+        this.userId = userId;
         this.courses = courses;
+    }
+
+    public Student(String name, String regNo, String email, String pwd, String userId) {
+        this.name = name;
+        this.regNo = regNo;
+        this.email = email;
+        this.pwd = pwd;
+        this.userId = userId;
     }
 
     public Student() {
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public HashMap<String, Integer> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(HashMap<String, Integer> courses) {
-        this.courses = courses;
     }
 
     public String getName() {
@@ -65,5 +57,21 @@ public class Student {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public HashMap<String, Integer> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(HashMap<String, Integer> courses) {
+        this.courses = courses;
     }
 }

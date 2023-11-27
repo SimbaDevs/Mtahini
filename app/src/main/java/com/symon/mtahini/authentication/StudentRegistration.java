@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.symon.mtahini.MainActivity;
 import com.symon.mtahini.Navigation;
@@ -33,6 +34,7 @@ public class StudentRegistration extends AppCompatActivity {
     ImageButton imageButton;
     Button register_button;
     TextView loginTextView;
+    FirebaseUser firebaseUser;
     String name, email, regNumber, password, confirm_password;
 //    String regexPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
@@ -47,6 +49,7 @@ public class StudentRegistration extends AppCompatActivity {
         setContentView(R.layout.activity_student_registration);
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
         fStore = FirebaseFirestore.getInstance();
 
         imageButton = findViewById(R.id.stdRegArrowButton);
@@ -99,13 +102,14 @@ public class StudentRegistration extends AppCompatActivity {
                     .addOnCompleteListener(StudentRegistration.this, task -> {
                         if (task.isSuccessful()){
                             Log.d(TAG, "createUserWithEmail:success");
-                            userID = mAuth.getCurrentUser().getUid();
+                            userID = mAuth.getCurrentUser().getUid().toString();
                             student.setName(name);
                             student.setEmail(email);
                             student.setRegNo(regNumber);
                             student.setPwd(password);
+                            student.setUserId(userID);
 
-                            fStore.collection("Students").document(regNumber).set(student);
+                            fStore.collection("Students").document(userID).set(student);
                             Toast.makeText(this, "User should be added!", Toast.LENGTH_SHORT).show();
                             appNavigation.moveTo(StudentHomePage.class);
 

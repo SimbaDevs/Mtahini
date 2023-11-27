@@ -21,6 +21,10 @@
             android:exported="false"
             />
         <activity
+            android:name=".authentication.LecturerLanding"
+            android:exported="false"
+            />
+        <activity
             android:name=".RegisterLecturer"
             android:exported="false"
             />
