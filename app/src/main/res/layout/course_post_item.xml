@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/course_post_card"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/dark_card_background"
+        android:backgroundTint="#C1CDC1"
+        android:layout_marginStart="5dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/course_post_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_lec_unit"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"/>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
