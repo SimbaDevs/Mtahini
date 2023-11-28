@@ -14,6 +14,10 @@ public class Unit {
     }
     public Unit(){}
 
+    public Unit(String unitName) {
+        this.name = unitName;
+    }
+
     public String getName() {
         return name;
     }
