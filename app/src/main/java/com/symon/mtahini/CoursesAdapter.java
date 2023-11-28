@@ -10,49 +10,55 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.symon.mtahini.authentication.Student;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.ViewHolder> {
-    private ArrayList<HashMap<String, Integer>> courses;
+    private ArrayList<String> courses;
     FirebaseFirestore fStore;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
 
 
-    public CoursesAdapter(ArrayList<HashMap<String, Integer>> courses) {
+    public CoursesAdapter(ArrayList<String> courses) {
         this.courses = courses;
 
-        fetchCourses();
+        // get the current user
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+        // fetch the courses from the database
+        if (user != null) {
+            fetchCourses();
+        }
     }
 
     // fetch the courses from the database
-    public void fetchCourses() {
+    private void fetchCourses() {
         fStore = FirebaseFirestore.getInstance();
-        fStore.collection("course").get().addOnCompleteListener(task -> {
+        fStore.collection("Students").document(user.getUid()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                for (int i = 0; i < task.getResult().getDocuments().size(); i++) {
-                    HashMap<String, Integer> course = new HashMap<>();
-                    course.put("course", Integer.parseInt(task.getResult().getDocuments().get(i).get("course").toString()));
-                    courses.add(course);
-                    Log.d("Courses", "fetchCourses: " + course.get("course"));
-                }
+                Log.d("CoursesAdapter", "fetchCourses: " + task.getResult().get("course"));
+            } else {
+                Log.e("CoursesAdapter", "fetchCourses: " + task.getException());
             }
-            notifyDataSetChanged();
         });
     }
 
     @NonNull
     @Override
     public CoursesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_student_home_page, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_post_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CoursesAdapter.ViewHolder holder, int position) {
-        holder.course.setText(courses.get(position).get("course"));
+        holder.course.setText(courses.get(position));
     }
 
     @Override

@@ -24,7 +24,7 @@ public class StudentHomePage extends AppCompatActivity {
     TextView displayName,studentEmail,regNo;
     Button registerCourseBtn;
     RecyclerView coursesRecyclerView;
-    ArrayList<HashMap<String, Integer>> courses;
+    ArrayList<String> courses;
     Navigation navigation = new Navigation(this, StudentHomePage.this);
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
@@ -53,9 +53,9 @@ public class StudentHomePage extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("Courses").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 for (int i = 0; i < Objects.requireNonNull(task.getResult()).getChildrenCount(); i++) {
-                    HashMap<String, Integer> course = new HashMap<>();
-                    course.put("course", Integer.parseInt(Objects.requireNonNull(task.getResult().child(String.valueOf(i)).child("course").getValue()).toString()));
-                    courses.add(course);
+                    ArrayList<String> courses = new ArrayList<>();
+                    String courseName = task.getResult().child(String.valueOf(i)).child("name").getValue(String.class);
+                    courses.add(courseName);
                 }
                 LinearLayoutManager layoutManager = new LinearLayoutManager(this);
                 layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
