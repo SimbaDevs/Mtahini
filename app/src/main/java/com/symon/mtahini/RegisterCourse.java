@@ -13,7 +13,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +27,7 @@ public class RegisterCourse extends AppCompatActivity {
     String userID;
     DocumentReference documentReference;
 
-    List<String> coursesList = new ArrayList<>();
+    List<Unit> registeredUnits = new ArrayList<>();
     Navigation appNavigation = new Navigation(this, RegisterCourse.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,25 +67,18 @@ public class RegisterCourse extends AppCompatActivity {
             handleSwitchChange(seSwitch, "Software Engineering");
             handleSwitchChange(iapSwitch, "Internet Application Programming");
 
-            // create a hashmap using the coursesArray as string keys and set the adjacent values to 0
-            // this is to be used to store the courses in the database
-            // the value will be set as the marks obtained in the unit
-            HashMap<String, Integer> coursesMap = new HashMap<>();
-            for (String course : coursesList) {
-                coursesMap.put(course, 0);
-            }
+            // register the courses
+            documentReference.update("unitList", registeredUnits).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Log.d("DB_FETCH", registeredUnits.toString());
+                    Toast.makeText(this, "Unit Update Success!", Toast.LENGTH_SHORT).show();
+//                    appNavigation.moveTo(StudentHomePage.class);
+                } else {
+                    Log.e("DB_FETCH", Objects.requireNonNull(Objects.requireNonNull(task.getException()).getLocalizedMessage()));
+                    Toast.makeText(this, "Unit Update Fail!", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-            // save the courses to the database
-            documentReference.update("course", coursesMap)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()){
-                            Log.d("Courses", coursesMap.toString());
-                            Toast.makeText(this, "Successfully added: " + coursesMap, Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(e -> {
-                        Log.e("Courses", "Failed to add selected courses");
-                        Toast.makeText(this, "Course upload failure!", Toast.LENGTH_SHORT).show();
-                    });
         });
         cancelButton.setOnClickListener(v -> appNavigation.moveTo(StudentHomePage.class));
 
@@ -94,8 +86,12 @@ public class RegisterCourse extends AppCompatActivity {
 
     public void handleSwitchChange(SwitchCompat switchCompat, String course){
         switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) coursesList.add(course);
-            else coursesList.remove(course);
+            Unit newUnit = new Unit();
+            newUnit.setName(course);
+            if (isChecked) {
+                registeredUnits.add(newUnit);
+            }
+            else registeredUnits.remove(newUnit);
         });
     }
 }

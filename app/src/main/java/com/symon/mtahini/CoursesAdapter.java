@@ -9,22 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.ViewHolder> {
-    private ArrayList<String> courses;
+    private ArrayList<Unit> courses;
     FirebaseFirestore fStore;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
 
 
-    public CoursesAdapter(ArrayList<String> courses) {
+    public CoursesAdapter(ArrayList<Unit> courses) {
         this.courses = courses;
 
         // get the current user
@@ -41,7 +39,9 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.ViewHold
     private void fetchCourses() {
         fStore = FirebaseFirestore.getInstance();
         fStore.collection("Students").document(user.getUid()).get().addOnCompleteListener(task -> {
+            ArrayList<Unit> registeredUnits = (ArrayList<Unit>) task.getResult().get("course");
             if (task.isSuccessful()) {
+                courses = registeredUnits;
                 Log.d("CoursesAdapter", "fetchCourses: " + task.getResult().get("course"));
             } else {
                 Log.e("CoursesAdapter", "fetchCourses: " + task.getException());
@@ -58,7 +58,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull CoursesAdapter.ViewHolder holder, int position) {
-        holder.course.setText(courses.get(position));
+        holder.course.setText(courses.get(position).getName());
     }
 
     @Override

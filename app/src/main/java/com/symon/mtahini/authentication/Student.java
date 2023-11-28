@@ -1,30 +1,25 @@
 package com.symon.mtahini.authentication;
 
+import com.symon.mtahini.Unit;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Student {
     private String name, regNo, email, pwd, userId;
-    HashMap<String, Integer> courses;
-
-    public Student(String name, String regNo, String email, String pwd, String userId, HashMap<String, Integer> courses) {
-        this.name = name;
-        this.regNo = regNo;
-        this.email = email;
-        this.pwd = pwd;
-        this.userId = userId;
-        this.courses = courses;
-    }
-
-    public Student(String name, String regNo, String email, String pwd, String userId) {
-        this.name = name;
-        this.regNo = regNo;
-        this.email = email;
-        this.pwd = pwd;
-        this.userId = userId;
-    }
+    List<Unit> unitList = new ArrayList<>();
 
     public Student() {
+    }
+
+    public Student(String name, String regNo, String email, String pwd, String userId, List<Unit> unitList) {
+        this.name = name;
+        this.regNo = regNo;
+        this.email = email;
+        this.pwd = pwd;
+        this.userId = userId;
+        this.unitList = unitList;
     }
 
     public String getName() {
@@ -67,11 +62,11 @@ public class Student {
         this.userId = userId;
     }
 
-    public HashMap<String, Integer> getCourses() {
-        return courses;
+    public List<Unit> getUnitList() {
+        return unitList;
     }
 
-    public void setCourses(HashMap<String, Integer> courses) {
-        this.courses = courses;
+    public void setUnitList(List<Unit> unitList) {
+        this.unitList = unitList;
     }
 }

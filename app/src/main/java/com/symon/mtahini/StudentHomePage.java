@@ -24,7 +24,7 @@ public class StudentHomePage extends AppCompatActivity {
     TextView displayName,studentEmail,regNo;
     Button registerCourseBtn;
     RecyclerView coursesRecyclerView;
-    ArrayList<String> courses;
+    ArrayList<Unit> courses;
     Navigation navigation = new Navigation(this, StudentHomePage.this);
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
