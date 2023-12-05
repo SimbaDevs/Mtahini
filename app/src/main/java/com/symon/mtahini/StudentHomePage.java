@@ -64,7 +64,7 @@ public class StudentHomePage extends AppCompatActivity {
                         studentEmail.setText(email);
                         regNo.setText(regNumber);
 
-                        List<Map<String, Object>> units = (List<Map<String, Object>>) userData.get("units");
+                          List<Map<String, Object>> units = (List<Map<String, Object>>) userData.get("units");
                         Log.i("UNITS_SIZE", "No of Units = " + units.size() );
                         if (units != null) {
                             for (Map<String, Object> unit : units) {
